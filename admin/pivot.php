@@ -22,7 +22,7 @@ if(!auth_check())
   <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Product List | Odoo Sales | Dashboard
+    Sale Group | Odoo Sales | Dashboard
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -164,6 +164,7 @@ if(!auth_check())
         font-size: 15px;
         font-weight: bold;
       }
+      .dataTables_info{display: none;}
   </style>
 </head>
 <body class="">
@@ -245,12 +246,9 @@ if(!auth_check())
                   <thead>
                     <tr>
                       <th>Product</th>
-                      <th>Qty Invoiced</th>
-                      <th>Sub. Total Price</th>
-                      <th>Qty Invoice</th>
-                      <th>Qty Delivered</th>
-                      <th>Price Total</th>
-                      <th>Date</th>
+                      <th>Total Count</th>
+                      <th>Sub Total</th>
+                      <th>Total Price</th>
                     </tr>
                   </thead>
                 </table>
@@ -296,7 +294,7 @@ if(!auth_check())
                 'serverMethod': 'post',
                 'searching': false, // Remove default Search Control
                 'ajax': {
-                    'url':'ajaxfile.php',
+                    'url':'ajaxpivot.php',
                     'data': function(data){
                         // Read values
                         var product = $('#product').val();
@@ -313,12 +311,9 @@ if(!auth_check())
                 },
                 'columns': [
                     { data: 'product' },
-                    { data: 'qty_invoiced' },
-                    { data: 'price_subtotal' },
-                    { data: 'qty_to_invoice' },
-                    { data: 'qty_delivered' },
-                    { data: 'price_total' },
-                    { data: 'date' }
+                    { data: 'count' },
+                    { data: 'subtotal' },
+                    { data: 'total' },
                 ]
             });
 
