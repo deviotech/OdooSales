@@ -177,6 +177,7 @@ if(!auth_check())
       .text-site{
       font-weight: bold; color: #2196F3 !important;
     }
+    .dynamic-counts{font-size: 40px !important;}
   </style>
 </head>
 <body class="">
@@ -230,7 +231,7 @@ if(!auth_check())
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="card">
                   <div class="card-header text-center">
-                    <span class="badge badge-info p-1" style="font-size: 40px;"><?php echo $count['0']; ?></span>
+                    <span class="badge badge-info p-1 dynamic-counts"><?php echo $count['0']; ?></span>
                   </div><hr class="m-0">
                   <div class="card-body text-center text-warning">
                     <h3 class="font-weight-bold"><i class="fab fa-product-hunt"></i> Total Products</h3>
@@ -241,7 +242,7 @@ if(!auth_check())
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="card">
                   <div class="card-header text-center">
-                    <span class="badge badge-secondary p-1" style="font-size: 40px;"><?php echo round($count['2']); ?></span>
+                    <span class="badge badge-secondary p-1 dynamic-counts"><?php echo round($count['2']); ?></span>
                   </div><hr class="m-0">
                   <div class="card-body text-center text-info">
                     <h3 class="font-weight-bold"><i class="fas fa-shopping-cart"></i> Sales Invoiced</h3>
@@ -252,7 +253,7 @@ if(!auth_check())
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="card">
                   <div class="card-header text-center">
-                    <span class="badge badge-primary p-1" style="font-size: 40px;">$<?php echo round($count['1']); ?></span>
+                    <span class="badge badge-primary p-1 dynamic-counts">$<?php echo round($count['1']); ?></span>
                   </div><hr class="m-0">
                   <div class="card-body text-center text-success">
                     <h3 class="font-weight-bold"><i class="fas fa-file-invoice-dollar"></i> Total Sales Price</h3>
@@ -263,7 +264,7 @@ if(!auth_check())
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="card">
                   <div class="card-header text-center">
-                    <span class="badge badge-danger p-1" style="font-size: 40px;"><?php echo round($count['3']); ?></span>
+                    <span class="badge badge-danger p-1 dynamic-counts"><?php echo round($count['3']); ?></span>
                   </div><hr class="m-0">
                   <div class="card-body text-center text-danger">
                     <h3 class="font-weight-bold"><i class="fas fa-truck"></i> Sales Delivered</h3>
