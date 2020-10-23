@@ -24,7 +24,8 @@ if($searchByProduct != ''){
     $searchQuery .= " and (product like '%".$searchByProduct."%' ) ";
 }
 if($searchByPrice != ''){
-    $searchQuery .= " and (price_total >='".$searchByPrice."') ";
+    $numbers = explode('-', $searchByPrice);
+    $searchQuery .= " and (price_total between '".$numbers[0]."' AND '".$numbers[1]."') ";
 }
 if($searchByFrom != ''){
 

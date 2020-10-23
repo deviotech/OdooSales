@@ -174,6 +174,9 @@ if(!auth_check())
         font-size: 15px;
         font-weight: bold;
       }
+      .text-site{
+      font-weight: bold; color: #2196F3 !important;
+    }
   </style>
 </head>
 <body class="">
@@ -270,12 +273,13 @@ if(!auth_check())
 
           </div>
 
-          <div class="text-center">
-            <hr class="m-0" />
-            <h4 class="mt-2 font-weight-bold">Latest Product Sales</h4>
-          </div>
 
-          <table class="table table-sm table-bordered table-hover">
+          <div class="row">
+            <div class="col-sm-12 card">
+               <div class="card-header p-0 text-info">
+                      <h3 class="mt-1 mb-0 p-0 text-site">Odoo latest Sales</h3><hr class="m-0" />
+                    </div>
+              <table class="table table-sm table-hover">
             <thead>
               <tr>
                 <th scope="col">Product Name</th>
@@ -310,8 +314,9 @@ if(!auth_check())
             </tbody>
           </table>
 
+            </div>
+          </div>
 
-        </div> 
 
 
         
