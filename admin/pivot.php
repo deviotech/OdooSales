@@ -173,7 +173,7 @@ if(!auth_check())
       <nav class="navbar navbar-expand-lg navbar-default p-0 navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:;" style="font-weight: bold; color: #2196F3;">
+                <a class="navbar-brand" href="dashboard.php" style="font-weight: bold; color: #2196F3;">
                     Odoo Sales Report
                 </a>
             </div>

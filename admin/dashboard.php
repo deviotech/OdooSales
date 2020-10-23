@@ -9,11 +9,20 @@ if(!auth_check())
   exit();
 }
 
-
-
-  $sql = "SELECT * FROM sales";
+  $sql = "select 
+          COUNT(product) as p_total, 
+          SUM(price_total) as t_price, 
+          sum(qty_invoiced) as q_total, 
+          SUM(qty_delivered) as t_delivered 
+          from sales";
   $result = $conn->query($sql);
-  
+  $count = mysqli_fetch_row($result);
+
+
+  $sql1 = "select * FROM sales ORDER BY id DESC LIMIT 10";
+  $result_sales = $conn->query($sql1);
+
+
 ?>
 
 <head>
@@ -22,10 +31,11 @@ if(!auth_check())
   <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Product List | Odoo Sales | Dashboard
+    Odoo Sales | Dashboard
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -172,7 +182,7 @@ if(!auth_check())
       <nav class="navbar navbar-expand-lg navbar-default p-0 navbar-absolute fixed-top ">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="dashboard.php" style="font-weight: bold; color: #2196F3;">
+                <a class="navbar-brand" href="javascript:;" style="font-weight: bold; color: #2196F3;">
                     Odoo Sales Report
                 </a>
             </div>
@@ -187,11 +197,6 @@ if(!auth_check())
                 <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="btn btn-success text-white btn-sm" id="updateData">Update Sales Data</a>
-                    </li>
-                </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -215,69 +220,97 @@ if(!auth_check())
       <div class="content mt-5">
 
         <div class="container">
+          <div class="text-center">
+            <h2 class="">Welcome to <strong>ODOO Sales</strong> Dashboard</h2><hr class="m-0" />
+          </div>
           <div class="row">
-            <div class="col-md-12 card">
-                    <div class="row mt-2">
-
-                      <div class="col-sm-5">
-                        
-                        <small>From Date</small>
-                        <input type="date" id="dateFrom" class="form-control">
-                      </div>
-                      <div class="col-sm-5">
-                        
-                        <small>To Date</small>
-                        <input type="date" id="dateTo" class="form-control">
-                      </div>
-                      <div class="col-sm-2">
-                        
-                        <small>Filter by Year</small>
-                        <select class="form-control" id="year">
-                          <option hidden="" selected="" value="n/a">Choose year</option>
-                          <option value="2020">2020</option>
-                          <option value="2019">2019</option>
-                          <option value="2018">2018</option>
-                          <option value="2017">2017</option>
-                          <option value="2016">2016</option>
-                          <option value="2015">2015</option>
-                          <option value="2014">2014</option>
-                          <option value="2013">2013</option>
-                          <option value="2012">2012</option>
-                        </select>
-                      </div>
-                      <div class="col-sm-5">
-                        <small>Product Name</small>
-                        <input type="text" id="product" placeholder="Product Name" class="form-control">
-                      </div>
-                      <div class="col-sm-5">
-                        <small>Price</small>
-                        <input type="number" min="0" id="price" placeholder="Price" class="form-control">
-                      </div>
-
-                      
-                      <div class="col-sm-2 mt-4">
-                        <button type="button" id="btnDateSearch" class=" btn-primary btn-sm btn-block">Filter Sales</button>
-                      </div>
-                    </div>
-                    <hr class="p-0 mb-0" />
-                      
-              <div class="table-responsive card-body">
-                <table  id='empTable' class='table display table-hover dataTable'>
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>Qty Invoiced</th>
-                      <th>Sub. Total Price</th>
-                      <th>Qty Invoice</th>
-                      <th>Qty Delivered</th>
-                      <th>Price Total</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                </table>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card">
+                  <div class="card-header text-center">
+                    <span class="badge badge-info p-1" style="font-size: 40px;"><?php echo $count['0']; ?></span>
+                  </div><hr class="m-0">
+                  <div class="card-body text-center text-warning">
+                    <h3 class="font-weight-bold"><i class="fab fa-product-hunt"></i> Total Products</h3>
+                  </div>
               </div>
             </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card">
+                  <div class="card-header text-center">
+                    <span class="badge badge-secondary p-1" style="font-size: 40px;"><?php echo round($count['2']); ?></span>
+                  </div><hr class="m-0">
+                  <div class="card-body text-center text-info">
+                    <h3 class="font-weight-bold"><i class="fas fa-shopping-cart"></i> Sales Invoiced</h3>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card">
+                  <div class="card-header text-center">
+                    <span class="badge badge-primary p-1" style="font-size: 40px;">$<?php echo round($count['1']); ?></span>
+                  </div><hr class="m-0">
+                  <div class="card-body text-center text-success">
+                    <h3 class="font-weight-bold"><i class="fas fa-file-invoice-dollar"></i> Total Sales Price</h3>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="card">
+                  <div class="card-header text-center">
+                    <span class="badge badge-danger p-1" style="font-size: 40px;"><?php echo round($count['3']); ?></span>
+                  </div><hr class="m-0">
+                  <div class="card-body text-center text-danger">
+                    <h3 class="font-weight-bold"><i class="fas fa-truck"></i> Sales Delivered</h3>
+                  </div>
+              </div>
+            </div>
+
           </div>
+
+          <div class="text-center">
+            <hr class="m-0" />
+            <h4 class="mt-2 font-weight-bold">Latest Product Sales</h4>
+          </div>
+
+          <table class="table table-sm table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Qty. Invoiced</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Qty Pending</th>
+                <th scope="col">Qty. Delivered</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+
+                  if ($result_sales->num_rows > 0) {
+                    while($row = $result_sales->fetch_assoc()) {
+                      echo "<tr>
+                          <td>".$row["product"]."</td>
+                          <td>".$row["qty_invoiced"]."</td>
+                          <td>".$row["price_subtotal"]."</td>
+                          <td>".$row["qty_to_invoice"]."</td>
+                          <td>".$row["qty_delivered"]."</td>
+                          <td>".$row["price_total"]."</td>
+                          <td>".$row["date"]."</td>
+                        </tr>";
+                    }
+                  } 
+
+              ?>
+                            
+            </tbody>
+          </table>
+
+
         </div> 
 
 
@@ -307,73 +340,6 @@ if(!auth_check())
  });
 </script>
 
-
-<script>
-        $(document).ready(function(){
-            var dataTable = $('#empTable').DataTable({
-                'processing': true,
-                'serverSide': true,
-                "lengthChange": false,
-                'serverMethod': 'post',
-                'searching': false, // Remove default Search Control
-                'ajax': {
-                    'url':'ajaxfile.php',
-                    'data': function(data){
-                        // Read values
-                        var product = $('#product').val();
-                        var price = $('#price').val();
-                        var to = $('#dateTo').val();
-                        var from = $('#dateFrom').val();
-                        var year = $('#year').val();
-
-                        // Append to data
-                        data.searchByProduct = product;
-                        data.searchByPrice = price;
-                        data.searchByFrom = from;
-                        data.searchByTo = to;
-                        data.searchByYear = year;
-                    }
-                },
-                'columns': [
-                    { data: 'product' },
-                    { data: 'qty_invoiced' },
-                    { data: 'price_subtotal' },
-                    { data: 'qty_to_invoice' },
-                    { data: 'qty_delivered' },
-                    { data: 'price_total' },
-                    { data: 'date' }
-                ]
-            });
-
-            $('#searchByName').keyup(function(){
-                dataTable.draw();
-            });
-
-            $('#btnDateSearch').click(function(){
-              $(this).html('Filtering...');
-                dataTable.draw();
-                $(this).html('Filter Data');
-
-            });
-        });
-        </script>
-
-
-        <!-- update data call to ajax cron -->
-        <script>
-          $("#updateData").on("click", function(){
-            $(this).text('Updating...');
-              $.ajax({
-              type: "GET",
-              url: "croncall.php",
-              success:function(response)
-              {
-                console.log(response);
-                $('#updateData').text('Update Sales Data');
-              }
-            });
-          });
-        </script>
 
 </body>
 

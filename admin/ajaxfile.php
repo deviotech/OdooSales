@@ -16,6 +16,7 @@ $searchByFrom    = $_POST['searchByFrom'];
 $searchByTo      = $_POST['searchByTo'];
 $searchByProduct = $_POST['searchByProduct'];
 $searchByPrice   = $_POST['searchByPrice'];
+$searchByYear    = $_POST['searchByYear'];
 
 ## Search 
 $searchQuery = " ";
@@ -34,6 +35,9 @@ if($searchByFrom != ''){
     $date_time_to = date_format($dateTo,"d/m/y H:i:s");
 
     $searchQuery .= " and (date between '".$date_time_from."' AND '".$date_time_to."' ) ";
+}
+if($searchByYear != '' && $searchByYear != 'n/a'){
+    $searchQuery .= " and (date like '%".$searchByYear."%' ) ";
 }
 
 ## Total number of records without filtering
