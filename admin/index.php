@@ -40,6 +40,140 @@ if(!auth_check())
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link href="<?php echo base_url() ?>/assets/css/custom.css" rel="stylesheet" />
 
+<<<<<<< HEAD
+=======
+  <style type="text/css">
+    body {
+  background-color: #F4F7FD;
+    font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #212112;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 7%;
+  overflow-x: hidden;
+    transition: all 200ms linear;
+}
+    .table thead th{
+      border-top-width: 1px;
+    }
+    .bmd-form-group .bmd-label-floating, .bmd-form-group .bmd-label-placeholder{
+      left: 10px;
+    }
+    .form-control{
+      border: 2px solid #eee;
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+    input.form-control, textarea.form-control{
+      background-image: none !important;
+      padding: 8px 20px;
+    }
+    .form-group label{
+      font-weight: bold;
+      text-transform: capitalize;
+      margin-bottom: 3px;
+    }
+    .card-title{
+      font-weight: bold;
+    }
+    .navbar .navbar-brand{
+      font-weight: bold;
+    }
+    .dataTables_filter{
+      text-align: right;
+    }
+    .dataTables_paginate .pagination{
+      justify-content: right;
+    }
+    .collapsein{
+      margin-top: 20px;
+      padding-left: 1.5rem;
+      margin-bottom: 0;
+      list-style: none;
+    }
+    select {
+        background-image:
+          linear-gradient(45deg, transparent 50%, gray 50%),
+          linear-gradient(135deg, gray 50%, transparent 50%),
+          linear-gradient(to right, #ccc, #ccc) !important;
+        background-position:
+          calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px),
+          calc(100% - 2.5em) 0.5em !important;
+        background-size:
+          5px 5px,
+          5px 5px,
+          1px 1.5em !important;
+        background-repeat: no-repeat !important;
+      }
+
+      select:focus {
+        background-image:
+          linear-gradient(45deg, green 50%, transparent 50%),
+          linear-gradient(135deg, transparent 50%, green 50%),
+          linear-gradient(to right, #ccc, #ccc) !important;
+        background-position:
+          calc(100% - 15px) 1em,
+          calc(100% - 20px) 1em,
+          calc(100% - 2.5em) 0.5em !important;
+        background-size:
+          5px 5px,
+          5px 5px,
+          1px 1.5em !important;
+        background-repeat: no-repeat !important;
+        outline: 0 !important;
+      }
+      select:-moz-focusring {
+        color: transparent !important;
+        text-shadow: 0 0 0 #000 !important;
+      }
+      .bootstrap-select > .dropdown-toggle,
+      .bootstrap-select > .dropdown-toggle:hover,
+      .bootstrap-select > .dropdown-toggle:active,
+      .bootstrap-select > .dropdown-toggle:focus{
+        padding: 7px 12px !important;
+        margin: 0px !important;
+        color: #0f0f0f;
+        background: #fff;
+        box-shadow: none;
+        border: 2px solid #eee;
+        border-radius: 8px;
+      }
+      .job-checks .form-check{
+        padding-left: 18px;
+        flex: 1;
+      }
+      .nav-tabs .nav-link.disabled{
+        opacity: .6;
+        cursor: not-allowed;
+      }
+      .bold{
+        font-weight: bold !important;
+      }
+      .form-group .alert-danger{
+        font-size: 12px;
+        padding: 3px;
+      }
+      th{
+        font-weight: bold !important;
+        font-size: 15px !important;
+      }
+      .paging_simple_numbers{
+        float: right;
+      }
+      #btnDateSearch{
+        cursor: pointer;
+      }
+      .nav-link a{
+        color: #000;
+        font-size: 15px;
+        font-weight: bold;
+      }
+  </style>
+>>>>>>> aa3e30deb567a3b52c35bcbde92acfe27b6f0a2f
 </head>
 <body class="">
   <div class="wrapper">

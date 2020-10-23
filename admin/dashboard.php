@@ -275,6 +275,7 @@ if(!auth_check())
           </div>
 
 
+<<<<<<< HEAD
           <div class="row">
             <div class="col-sm-12 card">
                <div class="card-header p-0 text-info">
@@ -293,31 +294,53 @@ if(!auth_check())
               </tr>
             </thead>
             <tbody>
+=======
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-sm table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Qty. Invoiced</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Qty Pending</th>
+                    <th scope="col">Qty. Delivered</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+>>>>>>> aa3e30deb567a3b52c35bcbde92acfe27b6f0a2f
 
-              <?php
+                  <?php
 
-                  if ($result_sales->num_rows > 0) {
-                    while($row = $result_sales->fetch_assoc()) {
-                      echo "<tr>
-                          <td>".$row["product"]."</td>
-                          <td>".$row["qty_invoiced"]."</td>
-                          <td>".$row["price_subtotal"]."</td>
-                          <td>".$row["qty_to_invoice"]."</td>
-                          <td>".$row["qty_delivered"]."</td>
-                          <td>".$row["price_total"]."</td>
-                          <td>".$row["date"]."</td>
-                        </tr>";
-                    }
-                  } 
-
-              ?>
-                            
-            </tbody>
-          </table>
-
+<<<<<<< HEAD
             </div>
           </div>
 
+=======
+                      if ($result_sales->num_rows > 0) {
+                        while($row = $result_sales->fetch_assoc()) {
+                          echo "<tr>
+                              <td>".$row["product"]."</td>
+                              <td>".$row["qty_invoiced"]."</td>
+                              <td>".$row["price_subtotal"]."</td>
+                              <td>".$row["qty_to_invoice"]."</td>
+                              <td>".$row["qty_delivered"]."</td>
+                              <td>".$row["price_total"]."</td>
+                              <td>".$row["date"]."</td>
+                            </tr>";
+                        }
+                      } 
+
+                  ?>
+                                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div> 
+>>>>>>> aa3e30deb567a3b52c35bcbde92acfe27b6f0a2f
 
 
         
