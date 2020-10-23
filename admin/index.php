@@ -62,6 +62,7 @@ if(!auth_check())
     }
     input.form-control, textarea.form-control{
       background-image: none !important;
+      padding: 8px 20px;
     }
     .form-group label{
       font-weight: bold;

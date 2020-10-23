@@ -275,42 +275,44 @@ if(!auth_check())
             <h4 class="mt-2 font-weight-bold">Latest Product Sales</h4>
           </div>
 
-          <table class="table table-sm table-bordered table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Qty. Invoiced</th>
-                <th scope="col">Subtotal</th>
-                <th scope="col">Qty Pending</th>
-                <th scope="col">Qty. Delivered</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-sm table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Qty. Invoiced</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Qty Pending</th>
+                    <th scope="col">Qty. Delivered</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-              <?php
+                  <?php
 
-                  if ($result_sales->num_rows > 0) {
-                    while($row = $result_sales->fetch_assoc()) {
-                      echo "<tr>
-                          <td>".$row["product"]."</td>
-                          <td>".$row["qty_invoiced"]."</td>
-                          <td>".$row["price_subtotal"]."</td>
-                          <td>".$row["qty_to_invoice"]."</td>
-                          <td>".$row["qty_delivered"]."</td>
-                          <td>".$row["price_total"]."</td>
-                          <td>".$row["date"]."</td>
-                        </tr>";
-                    }
-                  } 
+                      if ($result_sales->num_rows > 0) {
+                        while($row = $result_sales->fetch_assoc()) {
+                          echo "<tr>
+                              <td>".$row["product"]."</td>
+                              <td>".$row["qty_invoiced"]."</td>
+                              <td>".$row["price_subtotal"]."</td>
+                              <td>".$row["qty_to_invoice"]."</td>
+                              <td>".$row["qty_delivered"]."</td>
+                              <td>".$row["price_total"]."</td>
+                              <td>".$row["date"]."</td>
+                            </tr>";
+                        }
+                      } 
 
-              ?>
-                            
-            </tbody>
-          </table>
-
-
+                  ?>
+                                
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div> 
 
 
