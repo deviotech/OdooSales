@@ -191,8 +191,8 @@ if(!auth_check())
                 </a>
             </div>
             <div class="nav-link text-right">
-              <a href="index.php" class="nav-item p-2">Products List</a>
-              <a href="pivot.php" class="nav-item p-2">Pivot Sales</a>
+              <a href="index.php" class="nav-item p-2">Sales List</a>
+              <a href="pivot.php" class="nav-item p-2">Pivot</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
