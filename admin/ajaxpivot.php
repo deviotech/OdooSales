@@ -48,7 +48,18 @@ $totalRecords = $records['allcount'];
 // $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select *,COUNT(*) AS count , SUM(price_total) as total, Sum(price_subtotal) as subtotal FROM Sales where 1 ".$searchQuery." group by product limit ".$row.",".$rowperpage;
+$empQuery = "select *,COUNT(*) AS count , 
+             SUM(price_total) as total, 
+             AVG(qty_invoiced) as qty_invoiced_avg, 
+             AVG(qty_delivered) as qty_delivered, 
+             AVG(qty_to_invoice) as qty_to_invoice_avg, 
+             AVG(price_total) as average, 
+             Sum(price_subtotal) as subtotal 
+             FROM Sales 
+             where 1 ".$searchQuery." 
+             group by product 
+             limit ".$row.",".$rowperpage;
+
 $empRecords = mysqli_query($conn, $empQuery);
 $data = array();
 
@@ -57,7 +68,11 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
     		"product"=>$row['product'],
             "count"=>$row['count'],
             "total"=>round($row['total']),
-    		"subtotal"=>round($row['subtotal'])
+            "subtotal"=>round($row['subtotal']),
+            "qty_invoiced_avg"=>round($row['qty_invoiced_avg']),
+            "qty_delivered"=>round($row['qty_delivered']),
+            "qty_to_invoice_avg"=>round($row['qty_to_invoice_avg']),
+            "average"=>round($row['average'])
     	);
 }
 

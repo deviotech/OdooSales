@@ -143,8 +143,15 @@ if(!auth_check())
                       </div>
                     </div>
                     <hr class="p-0 mb-0" />
-                      
               <div class="table-responsive card-body">
+                      <div class="row text-center mb-3"style="font-size:30px;">
+                      <div class="col-sm-6">
+                            <span class="badge badge-secondary" id="p_avg_span"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="badge badge-success" id="p_total_span"></span>
+                        </div>
+                      </div>
                 <table  id='empTable' class='table display table-hover dataTable'>
                   <thead>
                     <tr>
@@ -222,8 +229,16 @@ if(!auth_check())
                         data.searchByFrom = from;
                         data.searchByTo = to;
                         data.searchByYear = year;
-                    }
+                    },
+                      
                 },
+                
+                "drawCallback": function(response) {
+                console.log(response.json);
+                $('#p_total_span').text('Products Total Price: $'+response.json.totalProductsSum);
+                $('#p_avg_span').text('Products Total Average: $'+response.json.avg);
+              },    
+                
                 'columns': [
                     { data: 'product' },
                     { data: 'qty_invoiced' },
@@ -232,7 +247,8 @@ if(!auth_check())
                     { data: 'qty_delivered' },
                     { data: 'price_total' },
                     { data: 'date' }
-                ]
+                ],
+                
             });
 
             $('#searchByName').keyup(function(){
@@ -264,6 +280,7 @@ if(!auth_check())
             });
           });
         </script>
+        <!-- reange slider script  -->
         <script>
         $(function() {
           $( "#slider-range" ).slider({

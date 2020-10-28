@@ -124,13 +124,17 @@ if(!auth_check())
                     <hr class="p-0 mb-0" />
                       
               <div class="table-responsive card-body">
-                <table  id='empTable' class='table display table-hover dataTable'>
+                <table  id='empTable' class='table display table-hover table-bordered dataTable'>
                   <thead>
                     <tr>
                       <th>Product</th>
                       <th>Total Count</th>
                       <th>Sub Total</th>
                       <th>Total Price</th>
+                      <th>Invoiced Avg</th>
+                      <th>To Invoice Avg</th>
+                      <th>Delivered Avg</th>
+                      <th>Total Avg</th>
                     </tr>
                   </thead>
                 </table>
@@ -202,6 +206,10 @@ if(!auth_check())
                     { data: 'count' },
                     { data: 'subtotal' },
                     { data: 'total' },
+                    { data: 'qty_invoiced_avg' },
+                    { data: 'qty_to_invoice_avg' },
+                    { data: 'qty_delivered' },
+                    { data: 'average' },
                 ]
             });
 

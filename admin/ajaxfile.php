@@ -54,6 +54,14 @@ $totalRecordwithFilter = $records['allcount'];
 ## Fetch records
 $empQuery = "select * from sales WHERE 1 ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $empRecords = mysqli_query($conn, $empQuery);
+
+
+
+$sumTotalSQL = mysqli_query($conn,"select SUM(price_total) as SumTotal , SUM(price_total) / COUNT(price_total) AS 'avg'  from sales WHERE 1 ".$searchQuery);
+$sumTotalResult = mysqli_fetch_assoc($sumTotalSQL);
+
+
+
 $data = array();
 
 while ($row = mysqli_fetch_assoc($empRecords)) {
@@ -71,6 +79,8 @@ while ($row = mysqli_fetch_assoc($empRecords)) {
 ## Response
 $response = array(
     "draw" => intval($draw),
+    "totalProductsSum" => round($sumTotalResult['SumTotal']),
+    "avg" => round($sumTotalResult['avg']),
     "iTotalRecords" => $totalRecords,
     "iTotalDisplayRecords" => $totalRecordwithFilter,
     "aaData" => $data
