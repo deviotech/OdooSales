@@ -39,6 +39,16 @@ if(!auth_check())
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link href="<?php echo base_url() ?>/assets/css/custom.css" rel="stylesheet" />
+  <link href="<?php echo base_url() ?>/assets/css/bootstrap-tagsinput.css" rel="stylesheet" />
+  <style>
+    .dataTables_info{display: none;}
+    .bootstrap-tagsinput{
+      display: block;
+    }
+    .bootstrap-tagsinput .tag{
+      line-height: 20px;
+    }
+  </style>
 
 </head>
 <body class="">
@@ -126,7 +136,7 @@ if(!auth_check())
                       </div>
                       <div class="col-sm-5">
                         <small>Product Name</small>
-                        <input type="text" id="product" placeholder="Product Name" class="form-control">
+                        <input type="text" id="product" data-role="tagsinput" placeholder="Product Name" class="form-control">
                       </div>
                       <div class="col-sm-5">
                         <small>Price Range</small>
@@ -184,6 +194,7 @@ if(!auth_check())
 <script src="<?php echo base_url() ?>/assets/js/plugins/bootstrap-selectpicker.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/plugins/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>/assets/js/plugins/bootstrap-tagsinput.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

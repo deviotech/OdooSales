@@ -2,7 +2,7 @@
 
 function base_url($uri = ''){
 	return sprintf(
-	    "%s://localhost/odoosales/",
+	    "%s://localhost/odoo-sales-report/",
 	    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
 	    $uri !== '' ? "$uri" : ''
   	);

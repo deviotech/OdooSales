@@ -21,7 +21,17 @@ $searchByYear    = $_POST['searchByYear'];
 ## Search 
 $searchQuery = " ";
 if($searchByProduct != ''){
-    $searchQuery .= " and (product like '%".$searchByProduct."%' ) ";
+    $chunks = explode(',', $searchByProduct);
+    $likeQ = "product like '%".$chunks[0]."%'";
+    $first = true;
+    foreach($chunks as $piece)
+    {
+        if(!$first)
+            $first = false;
+        else
+            $likeQ .= " or product like '%".$piece."%'";
+    }
+    $searchQuery .= " and ($likeQ) ";
 }
 if($searchByPrice != ''){
     $numbers = explode('-', $searchByPrice);
